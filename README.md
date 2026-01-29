@@ -2,15 +2,15 @@
  Kantor Wilayah Kementerian Hukum Nusa Tenggara Barat
 
  # Teknologi yang Digunakan
- -Framework : Laravel 12
- -Starter Kit : None
- -Styling : Tailwind CSS
- -Database : SQLite
- -Environment : Laravel Herd
- #Fitur Khusus: 
-    - Native HTML5 Camera: untuk capture wajah
-    - HTML5 Geolocation API: untuk validasi titik koordinat peserta
-    - Leaflet.js: untuk menampilkan peta lokasi absen
+ - Framework : Laravel 12
+ - Starter Kit : None
+ - Styling : Tailwind CSS
+ - Database : SQLite
+ - Environment : Laravel Herd
+ # Fitur Khusus: 
+ - Native HTML5 Camera: untuk capture wajah
+ - HTML5 Geolocation API: untuk validasi titik koordinat peserta
+ - Leaflet.js: untuk menampilkan peta lokasi absen
 
  # Fitur Utama
  Web ini memfasilitasi tiga role :
