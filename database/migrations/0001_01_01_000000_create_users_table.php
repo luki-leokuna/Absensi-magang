@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -17,6 +14,28 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            // Role: pembeda hak akses
+            $table->enum('role', ['admin', 'mentor', 'peserta'])->default('peserta');
+
+            // Divisi: sesuai struktur organisasi Permenkum no 2 tahun 2024
+            $table->enum('divisi', [
+                'PIMPINAN_TINGGI',  //kakanwil & kadiv
+                'PELAYANAN_HUKUM',  //divisi pelayanan hukum
+                'PP_PEMBINAAN_HUKUM', // divisi peraturan perundang-undang
+                'TATA_USAHA',  //bagian tata usaha dan umum
+                'LAINNYA' //untuk tamu
+            ])->nullable;
+
+            // data identitas pegawai / peserta magang
+            $table->string('nip')->nullable(); // NIP buat mentor
+            $table->string('jabatan')->nullable(); //Contoh (Kepala Bidang AHU)
+            $table->string('institusi')->nullable(); //asal kampus/sekolah (untuk peserta magang/PKL)
+
+            //Relasi Mentor
+            // untuk mencatat siapa mentor dari peserta magang
+            $table->foreignId('mentor_id')->nullable()->constrained('users')->onDelete('set null');
+
             $table->rememberToken();
             $table->timestamps();
         });
